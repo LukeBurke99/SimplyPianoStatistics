@@ -1,0 +1,40 @@
+﻿CREATE DATABASE `simply_piano_stats` /*!40100 DEFAULT CHARACTER SET utf8 */;
+
+CREATE TABLE `courses` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(50) DEFAULT NULL,
+  `ordering` int(11) DEFAULT 0,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+
+CREATE TABLE `practice_entries` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` char(36) NOT NULL,
+  `song_id` int(11) NOT NULL,
+  `training` char(1) DEFAULT NULL,
+  `notes` int(11) DEFAULT NULL,
+  `notes_hit` int(11) DEFAULT NULL,
+  `timing` int(11) DEFAULT NULL,
+  `assistance` int(11) DEFAULT NULL,
+  `stars` char(1) DEFAULT NULL,
+  `date` datetime NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+
+CREATE TABLE `songs` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `course_id` int(11) DEFAULT NULL,
+  `name` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
+  `author` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
+  `ordering` int(11) DEFAULT 0,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+CREATE TABLE `users` (
+  `id` char(36) NOT NULL,
+  `first_name` varchar(45) DEFAULT NULL,
+  `last_name` varchar(45) DEFAULT NULL,
+  `start_date` datetime DEFAULT NULL,
+  `settings` longtext DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
